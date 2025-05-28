@@ -59,7 +59,7 @@ export default {
           this.createWelcomeMessage();
         })
         .catch(error => {
-          this.errMsg = error.response?.data || 'Fetch failed';
+          this.errMsg = (error.response && error.response.data) || 'Fetch failed';
         });
     },
     createWelcomeMessage() {
