@@ -75,6 +75,7 @@
 import axios from 'axios';
 import navbar from '@/components/Navbar';
 import popup from '@/components/popup';
+import api from '../api';
 
 export default {
   name: 'classes',
@@ -108,7 +109,7 @@ export default {
       },
 
     fetchSessions() {
-      axios.get('http://localhost:8080/session/')
+      api.get('/session/')
         .then(response => {
           this.sessions = response.data; // Assign the fetched sessions to the sessions array
         })
@@ -169,7 +170,7 @@ export default {
       };
 
       console.log(body);
-      axios.post('http://localhost:8080/register', body)
+      api.post('/register', body)
       .then(response => {
           console.log('Registration successful:', response.data);
           this.showSuccessMessage('Successfully registered to session');
@@ -189,7 +190,7 @@ export default {
         }
         const id = localObj.id;
 
-        axios.get(`http://localhost:8080/customer/${id}/`)
+        api.get(`/customer/${id}/`)
           .then(res => {
             this.customer = res.data;
           })

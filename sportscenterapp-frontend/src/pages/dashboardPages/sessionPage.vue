@@ -26,6 +26,7 @@
 
 <script>
 import axios from 'axios'
+import api from '../../api'
 import Dashboard from '@/pages/Dashboard'
 import createviewsessions from '@/components/createviewsessions'
 import sessiontable from '@/components/sessiontable'
@@ -76,7 +77,7 @@ export default {
       this.fetchSessions();
     },
     fetchSessions() {
-        axios.get('http://localhost:8080/session/')
+        api.get('/session/')
           .then(res => {
             this.sessions = res.data;
           })

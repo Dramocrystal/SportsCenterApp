@@ -45,6 +45,7 @@
 
 <script>
 import axios from 'axios';
+import api from '../api';
 import { reactive } from 'vue';
 import popup from '@/components/popup'
 
@@ -84,7 +85,7 @@ export default {
         token: ""
       }
 
-      axios.post('http://localhost:8080/customer', requestBody)
+      api.post('/customer', requestBody)
         .then(response => {
         console.log(response.data);
         state.successMessage = "Account created successfully, please log in !"

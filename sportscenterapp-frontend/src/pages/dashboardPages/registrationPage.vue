@@ -9,6 +9,7 @@
 
   <script>
   import axios from 'axios';
+  import api from '../../api';
   import Dashboard from '@/pages/Dashboard'
   import registrationtable from '@/components/registrationtable'
 
@@ -51,7 +52,7 @@ export default {
       }
 
       console.log(customerId);
-      axios.get(`http://localhost:8080/register/customer/${customerId}`)
+      api.get(`/register/customer/${customerId}`)
         .then(res => {
           this.registrations = res.data; // Directly assign the response data
           console.log('Registrations fetched:', this.registrations);

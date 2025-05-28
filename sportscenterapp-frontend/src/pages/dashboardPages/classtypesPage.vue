@@ -23,6 +23,7 @@ import createclasstypes from '@/components/createclasstypes'
 import classtypetable from '@/components/classtypetable'
 import editclasstype from '@/components/editclasstype'
 import axios from 'axios'
+import api from '../../api'
 
 export default {
   name: 'classTypePage',
@@ -47,7 +48,7 @@ export default {
   },
   methods: {
     fetchClassType(id) {
-      axios.get(`http://localhost:8080/classtypes/${id}`)
+      api.get(`/classtypes/${id}`)
         .then(res => {
           this.classType = res.data;
         })
@@ -68,7 +69,7 @@ export default {
       this.loadClassTypes();
     },
     loadClassTypes() {
-      axios.get('http://localhost:8080/classtypes')
+      api.get('/classtypes')
         .then(res => {
           this.classTypes = res.data;
         })
@@ -77,7 +78,7 @@ export default {
         });
     },
     approveClassType(id) {
-      axios.put(`http://localhost:8080/classtypes/${id}/approve`)
+      api.put(`/classtypes/${id}/approve`)
         .then(res => {
           showErrMsg.call(this, "Class type approved");
           this.loadClassTypes()

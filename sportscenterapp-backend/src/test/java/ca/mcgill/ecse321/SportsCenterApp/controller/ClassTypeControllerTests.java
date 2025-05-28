@@ -9,6 +9,7 @@ import ca.mcgill.ecse321.SportsCenterApp.repository.ClassTypeRepository;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -19,9 +20,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.core.env.Environment;
 
 
-
+@ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ClassTypeControllerTests {
 
@@ -32,11 +35,24 @@ public class ClassTypeControllerTests {
     private ClassTypeRepository classTypeRepository;
 
     @BeforeEach
-    @AfterEach
-    void clearDatabase(){
+    void clearBefore() {
         classTypeRepository.deleteAll();
     }
 
+    @AfterEach
+    void clearAfter() {
+        classTypeRepository.deleteAll();
+    }
+
+
+    @Autowired
+    private Environment env;
+
+    @Test
+    public void printActiveProfileAndDBUrl() {
+    System.out.println("🔍 Active profiles: " + Arrays.toString(env.getActiveProfiles()));
+    System.out.println("🔗 DB URL: " + env.getProperty("spring.datasource.url"));
+    }
 
     @Test
     public void testCreateAndGetClassType(){

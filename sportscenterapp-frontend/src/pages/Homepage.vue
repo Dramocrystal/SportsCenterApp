@@ -20,19 +20,6 @@
      
       
       </div>
-      
-      <div class="white-section">
-        <div class="card-row">
-          <card
-            v-for="(cardData, index) in cardDataList"
-            :key="index"
-            :imageSrc="cardData.imageSrc"
-            :title="cardData.title"
-            :description="cardData.description"
-            class="card"
-          />
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -41,6 +28,7 @@
 import axios from 'axios';
 import navbar from '@/components/Navbar';
 import card from '@/components/Card'; // Make sure to use the correct component name
+import api from '../api';
 
 export default {
   name: 'homepage',
@@ -61,25 +49,11 @@ export default {
     }
   },
   mounted() {
-    this.fetchClassTypes();
     this.fetchCenterData();
   },
   methods: {
-    fetchClassTypes() {
-      axios.get('http://localhost:8080/classtypes/approved')
-        .then(response => {
-          this.cardDataList = response.data.map(classType => ({
-            title: classType.name,
-            description: classType.description,
-            imageSrc: classType.imageUrl || 'https://img.freepik.com/premium-photo/photo-soccer-player-cat-soccer-ball_982005-3210.jpg' // Use classType.imageUrl if available, otherwise use a default URL
-          }));
-        })
-        .catch(error => {
-          console.error("There was an error fetching the class types: ", error.response);
-        });
-    },
     fetchCenterData() {
-      axios.get('http://localhost:8080/center/1')
+      api.get('/center/1')
         .then(response => {
           const data = response.data;
           this.infos.adress = data.adress;

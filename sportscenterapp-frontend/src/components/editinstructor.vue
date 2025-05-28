@@ -37,6 +37,7 @@
 
 <script>
 import axios from "axios";
+import api from "../api";
 import { showErrMsg } from "./loginform.vue";
 import popup from "./popup.vue";
 export default {
@@ -67,7 +68,7 @@ export default {
       this.$emit('close');
     },
     fetchInstructor(id) {
-      axios.get(`http://localhost:8080/instructors/${id}`)
+      api.get(`/instructors/${id}`)
         .then(res => {
           this.instructor = res.data;
         })
@@ -87,15 +88,15 @@ export default {
     async editInstructor() {
       const requests = [];
       requests.push(
-        axios.put(`http://localhost:8080/instructors/${this.instructorId}/password?newPassword=${this.instructor.password}`)
+        api.put(`/instructors/${this.instructorId}/password?newPassword=${this.instructor.password}`)
           .catch(err => {
             showErrMsg.call(this, err.response.data);
           }),
-        axios.put(`http://localhost:8080/instructors/${this.instructorId}/bio?bio=${this.instructor.biography}`)
+        api.put(`/instructors/${this.instructorId}/bio?bio=${this.instructor.biography}`)
           .catch(err => {
             showErrMsg.call(this, err.response.data);
           }),
-        axios.put(`http://localhost:8080/instructors/${this.instructorId}/yrOfExp?experience=${this.instructor.yearsOfExperience}`)
+        api.put(`/instructors/${this.instructorId}/yrOfExp?experience=${this.instructor.yearsOfExperience}`)
           .catch(err => {
             showErrMsg.call(this, err.response.data);
           })

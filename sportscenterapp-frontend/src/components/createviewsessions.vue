@@ -55,6 +55,7 @@
   
   <script>
   import axios from 'axios';
+  import api from '../api';
   import popup from './popup.vue';
   
   export default {
@@ -123,7 +124,7 @@
           sessionData.instructor = { id: this.session.instructor }
         }
   
-        axios.post('http://localhost:8080/session/', sessionData)
+        api.post('/session/', sessionData)
           .then(response => {
             console.log('Session created successfully:', response.data);
 
@@ -157,7 +158,7 @@
       },
   
       fetchInstructors() {
-        axios.get('http://localhost:8080/instructors')
+        api.get('/instructors')
           .then(res => {
             this.instructors = res.data;
           })
@@ -167,7 +168,7 @@
       },
   
       fetchClassTypes() {
-        axios.get('http://localhost:8080/classtypes/approved')
+        api.get('/classtypes/approved')
           .then(res => {
             this.classtypes = res.data;
           })

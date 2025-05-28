@@ -30,6 +30,7 @@
 
 <script>
 import axios from "axios";
+import api from "../api";
 import popup from "./popup.vue";
 
 export default {
@@ -53,7 +54,7 @@ export default {
   },
   methods: {
     fetchClassType(id) {
-      axios.get(`http://localhost:8080/classtypes/${id}`)
+      api.get(`/classtypes/${id}`)
         .then(res => {
           this.classType = res.data;
         })
@@ -76,7 +77,7 @@ export default {
         difficultyLevel: this.classType.difficultyLevel,
         approved: '',
       }
-      axios.put(`http://localhost:8080/classtypes/${this.classTypeId}`, body)
+      api.put(`/classtypes/${this.classTypeId}`, body)
         .then(res => {
           console.log("Class type updated", res.data);
           this.clearForm();

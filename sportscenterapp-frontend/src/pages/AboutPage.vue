@@ -27,6 +27,7 @@
 <script>
 import axios from 'axios';
 import navbar from '@/components/Navbar';
+import api from '../api';
 
 export default {
   name: 'instructors',
@@ -47,7 +48,7 @@ export default {
       },
 
     fetchInstructors() {
-      axios.get('http://localhost:8080/instructors')
+      api.get('/instructors')
         .then(response => {
           this.instructors = response.data; // Assign the fetched instructors to the instructors array
         })

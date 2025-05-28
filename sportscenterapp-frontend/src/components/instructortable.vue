@@ -29,6 +29,7 @@
 
 <script>
 import axios from "axios";
+import api from "../api";
 export default {
   props: {
     instructors: Array // Array of sports sessions
@@ -54,7 +55,7 @@ export default {
           console.log("id could not be parsed")
           return;
         }
-        axios.delete(`http://localhost:8080/instructors/${id}`)
+        api.delete(`/instructors/${id}`)
           .then(res => {
             this.$emit('delete-instructor', this.activeIndex);
           })

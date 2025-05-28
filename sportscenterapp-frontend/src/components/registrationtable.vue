@@ -33,6 +33,7 @@
 
   <script>
   import axios from 'axios'
+  import api from '../api';
   export default {
     props: {
       registrations: Array
@@ -51,7 +52,7 @@
           console.log("id could not be parsed")
           return;
         }
-        axios.delete(`http://localhost:8080/register/${id}`)
+        api.delete(`/register/${id}`)
           .then(res => {
             this.$emit('delete-registration', this.activeIndex);
           })

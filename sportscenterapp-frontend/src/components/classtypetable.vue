@@ -31,6 +31,7 @@
 
 <script>
 import axios from "axios";
+import api from "../api";
 import popup from "./popup.vue";
 
 export default {
@@ -68,7 +69,7 @@ export default {
           console.log("id could not be parsed")
           return;
         }
-        axios.delete(`http://localhost:8080/classtype/${id}`)
+        api.delete(`/classtype/${id}`)
           .then(res => {
             this.$emit('delete-classType', this.activeIndex);
           })
@@ -99,7 +100,7 @@ export default {
       }
     },
     loadClassTypes() {
-      axios.get('http://localhost:8080/classtypes')
+      api.get('/classtypes')
         .then(res => {
           this.classTypes = res.data;
         })
@@ -180,7 +181,7 @@ export default {
   height: 32px;
   border: none;
   font-weight: bold;
-  //margin-left: 10px;
+  margin-left: 10px;
 }
 
 .del-btn:hover{

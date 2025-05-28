@@ -10,6 +10,7 @@
 
 <script>
 import axios from 'axios';
+import api from '../../api';
 import Dashboard from '@/pages/Dashboard'
 import instructorSessionTable from "../../components/instructorSession/instructorSessionTable.vue";
 
@@ -43,14 +44,14 @@ export default {
       }
       const requests = []
       requests.push(
-      axios.get(`http://localhost:8080/session/instructor/${data.id}`)
+      api.get(`/session/instructor/${data.id}`)
         .then(res => {
           this.sessions.push(...res.data);
         })
         .catch(err => {
           console.log(err.response.data);
         }),
-      axios.get(`http://localhost:8080/session/empty`)
+      api.get(`/session/empty`)
         .then(res => {
           this.sessions.push(...res.data);
         })

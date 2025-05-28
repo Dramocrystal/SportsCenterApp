@@ -38,6 +38,7 @@
 
 <script>
 import axios from "axios";
+import api from "../../api";
 import popup from "../popup.vue";
 import { showErrMsg} from "../loginform.vue";
 
@@ -68,7 +69,7 @@ export default {
           return;
         }
         const instructorId = localObj.id;
-        axios.put(`http://localhost:8080/session/${sessionId}/instructor/${instructorId}`)
+        api.put(`/session/${sessionId}/instructor/${instructorId}`)
           .then(res => {
             this.$emit('edit-session', this.activeIndex);
           })
@@ -82,7 +83,7 @@ export default {
       if (this.activeIndex !== null) {
         const sessionId = this.sessions[this.activeIndex].id;
         console.log(sessionId);
-        axios.put(`http://localhost:8080/session/${sessionId}/instructor`)
+        api.put(`/session/${sessionId}/instructor`)
           .then(res => {
             this.$emit('drop-session');
           })

@@ -58,7 +58,7 @@
         this.showEditInstructorPopup = true;
       },
       fetchInstructors() {
-        axios.get('http://localhost:8080/instructors')
+        api.get('/instructors')
           .then(res => {
             this.instructors = res.data;
           })

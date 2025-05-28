@@ -39,6 +39,7 @@
   
   <script>
   import axios from 'axios';
+  import api from '../api';
 
   export default {
     props: {
@@ -65,7 +66,7 @@
           console.log("id could not be parsed")
           return;
         }
-        axios.put(`http://localhost:8080/session/${id}/instructor`)
+        api.put(`/session/${id}/instructor`)
           .then(res => {
             this.$emit('delete-session', this.activeIndex); //refresh the table
           })
@@ -93,7 +94,7 @@
           console.log("id could not be parsed")
           return;
         }
-        axios.delete(`http://localhost:8080/session/${id}`)
+        api.delete(`/session/${id}`)
           .then(res => {
             this.$emit('delete-session', this.activeIndex);
           })

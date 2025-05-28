@@ -22,6 +22,7 @@
 
 <script>
 import axios from "axios";
+import api from "../api";
 import Popup from "./popup.vue";
 export default {
   components: {Popup},
@@ -73,33 +74,33 @@ export default {
       if (userType === "Customer") {
 
         requests.push(
-          axios.put(`http://localhost:8080/customer/${storageObj.id}/update-balance?updated-balance=${this.editedUser.accountBalance}`)
+          api.put(`/customer/${storageObj.id}/update-balance?updated-balance=${this.editedUser.accountBalance}`)
             .catch(err => {
               this.errMsg = err.response.data;
             }),
-          axios.put(`http://localhost:8080/customer/${storageObj.id}?password=${this.editedUser.password}`)
+          api.put(`/customer/${storageObj.id}?password=${this.editedUser.password}`)
             .catch(err => {
               this.errMsg = err.response.data;
             })
         );
       } else if (userType === "Instructor") {
         requests.push(
-          axios.put(`http://localhost:8080/instructors/${storageObj.id}/password?newPassword=${this.editedUser.password}`)
+          api.put(`/instructors/${storageObj.id}/password?newPassword=${this.editedUser.password}`)
             .catch(err => {
               this.errMsg = err.response.data;
             }),
-          axios.put(`http://localhost:8080/instructors/${storageObj.id}/bio?bio=${this.editedUser.biography}`)
+          api.put(`/instructors/${storageObj.id}/bio?bio=${this.editedUser.biography}`)
             .catch(err => {
               this.errMsg = err.response.data;
             }),
-          axios.put(`http://localhost:8080/instructors/${storageObj.id}/yrOfExp?experience=${this.editedUser.yearsOfExperience}`)
+          api.put(`/instructors/${storageObj.id}/yrOfExp?experience=${this.editedUser.yearsOfExperience}`)
             .catch(err => {
               this.errMsg = err.response.data;
             })
         );
       } else {
         // Owner or other user types
-        axios.put(`http://localhost:8080/owner/${storageObj.id}/password?newPassword=${this.editedUser.password}`)
+        api.put(`/owner/${storageObj.id}/password?newPassword=${this.editedUser.password}`)
           .catch(err => {
             this.errMsg = err.response.data;
           })
@@ -127,8 +128,8 @@ export default {
         } else {
           console.log("didnt fetch");
         }
-        console.log(`http://localhost:8080/${userType}/${id}`);
-        const response = await axios.get(`http://localhost:8080/${userType}/${id}`);
+        console.log(`/${userType}/${id}`);
+        const response = await api.get(`/${userType}/${id}`);
         if (response.status !== 200) {
           alert("Could not retrieve user info");
         }

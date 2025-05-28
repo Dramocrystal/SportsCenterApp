@@ -38,6 +38,7 @@
 
 <script>
 import axios from 'axios';
+import api from '../api';
 import popup from '@/components/popup';
 
 export default {
@@ -64,7 +65,7 @@ export default {
   },
   methods: {
     fetchCenterData() {
-      axios.get('http://localhost:8080/center/1')
+      api.get('/center/1')
         .then(response => {
           const data = response.data;
           this.infos.adress = data.adress;
@@ -81,7 +82,7 @@ export default {
     },
     saveChanges() {
       const { adress, week, weekend } = this.editedInfos;
-      axios.put(`http://localhost:8080/center/1`, { adress, weekSchedule: week, weekendSchedule: weekend })
+      api.put(`/center/1`, { adress, weekSchedule: week, weekendSchedule: weekend })
         .then(response => {
           // Update local state with edited data
           this.infos = { ...this.editedInfos };

@@ -22,6 +22,7 @@
 
 <script>
 import axios from 'axios';
+import api from '../api';
 import popup from './popup.vue';
 
 export default {
@@ -56,7 +57,7 @@ export default {
   methods: {
 
       fetchSession(id) {
-          axios.get(`http://localhost:8080/session/${id}`)
+          api.get(`/session/${id}`)
       .then(res => {
         this.session = res.data;
         this.session.classType = res.data.classType.id;
@@ -82,7 +83,7 @@ export default {
 
       const id = this.session.id;
       const instructorId = this.session.instructor;
-      axios.put(`http://localhost:8080/session/${id}/instructor/${instructorId}`)
+      api.put(`/session/${id}/instructor/${instructorId}`)
         .then(response => {
           console.log('Assigned Instructor Successfully', response.data);
 
@@ -116,7 +117,7 @@ export default {
 
 
     fetchClassTypes() {
-      axios.get('http://localhost:8080/classtypes/approved')
+      api.get('/classtypes/approved')
         .then(res => {
           this.classtypes = res.data;
         })
@@ -126,7 +127,7 @@ export default {
     },
 
     fetchInstructors(){
-      axios.get('http://localhost:8080/instructors')
+      api.get('/instructors')
         .then(res => {
           this.instructors = res.data;
         })

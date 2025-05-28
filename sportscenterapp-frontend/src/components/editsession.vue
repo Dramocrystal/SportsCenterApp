@@ -46,6 +46,7 @@
   
   <script>
   import axios from 'axios';
+  import api from '../api';
   import popup from './popup.vue';
   
   export default {
@@ -95,7 +96,7 @@
     methods: {
 
         fetchSession(id) {
-            axios.get(`http://localhost:8080/session/${id}`)
+            api.get(`/session/${id}`)
         .then(res => {
           this.session = res.data;
           this.session.classType = res.data.classType.id;
@@ -129,7 +130,7 @@
   
         console.log(sessionData)
         const id = this.session.id;
-        axios.put(`http://localhost:8080/session/${id}`, sessionData)
+        api.put(`/session/${id}`, sessionData)
           .then(response => {
             console.log('Session edited successfully:', response.data);
 
@@ -163,7 +164,7 @@
   
   
       fetchClassTypes() {
-        axios.get('http://localhost:8080/classtypes/approved')
+        api.get('/classtypes/approved')
           .then(res => {
             this.classtypes = res.data;
           })

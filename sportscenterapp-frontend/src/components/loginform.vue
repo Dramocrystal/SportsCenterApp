@@ -30,6 +30,7 @@
 
   <script>
   import axios from 'axios';
+  import api from '../api';
   import popup from "./popup.vue";
   export const showErrMsg = async function(errMsg) {
     this.errorMessage = errMsg;
@@ -61,7 +62,7 @@
           password: this.password,
           userType: this.customerType
         }
-        axios.post('http://localhost:8080/authentication/login', requestBody)
+        api.post('/authentication/login', requestBody)
           .then(response => {
             console.log(response.data);
             const jsonObject = response.data;

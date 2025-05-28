@@ -37,6 +37,7 @@
 
 <script>
 import axios from "axios";
+import api from "../api";
 import { showErrMsg } from "./loginform.vue";
 import popup from "./popup.vue";
 export default {
@@ -87,7 +88,7 @@ export default {
         biography: "",
         imageUrl: this.instructor.image
       }
-      axios.post('http://localhost:8080/instructor', body)
+      api.post('/instructor', body)
         .then(async (res) => {
           this.popupColor = "green";
           await showErrMsg.call(this, "Instructor created");

@@ -34,7 +34,8 @@ tasks.named('test') {
 	useJUnitPlatform()
 	testLogging {
 		exceptionFormat "full"
-		events "passed", "failed"
+		events "passed", "failed", "standard_out", "standard_error"
+		showStandardStreams = true
 	}
 	finalizedBy jacocoTestReport
 }

@@ -35,6 +35,7 @@
 
 <script>
 import axios from "axios";
+import api from "../api";
 import {showErrMsg} from "./loginform.vue";
 import popup from "./popup.vue";
 
@@ -67,7 +68,7 @@ export default {
         approved: true,
         imageUrl: this.classType.imageUrl
       }
-      axios.post('http://localhost:8080/classtype', body)
+      api.post('/classtype', body)
         .then(response => {
           console.log("Class type created successfully", response.data);
           this.clearForm();
@@ -85,7 +86,7 @@ export default {
         approved: false,
         imageUrl: this.classType.imageUrl
       }
-      axios.post('http://localhost:8080/classtype', body)
+      api.post('/classtype', body)
         .then(response => {
           console.log("Class type proposed successfully", response.data);
           this.clearForm();
