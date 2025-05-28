@@ -45,5 +45,5 @@ jobs:
           script: |
             aws s3 cp s3://sportscenter-bucket320/frontend/ ~/frontend/ --recursive
             sudo rm -rf /usr/share/nginx/html/*
-            sudo cp -r ~/sportscenter-frontend/* /usr/share/nginx/html/
+            sudo cp -r ~/frontend/* /usr/share/nginx/html/
             sudo systemctl restart nginx
