@@ -44,8 +44,12 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          envs: DB_USERNAME,DB_PASSWORD,SECRET_KEY
           script: |
             mkdir -p ~/backend
             aws s3 cp s3://sportscenter-bucket320/backend/app.jar ~/backend/sportscenterapp.jar
             sudo pkill -f 'java -jar' || true
+            DB_USERNAME=${{ secrets.DB_USERNAME }} \
+            DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            SECRET_KEY=${{ secrets.SECRET_KEY }} \
             nohup java -jar ~/backend/sportscenterapp.jar > ~/backend/spring.log 2>&1 &
