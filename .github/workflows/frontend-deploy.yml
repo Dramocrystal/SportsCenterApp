@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'sportscenterapp-frontend/**'
+  workflow_dispatch:
 
 jobs:
   deploy-frontend:
