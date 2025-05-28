@@ -1,205 +1,75 @@
+# 🏟️ SportsCenter App – Self-Hosted Version by Yazid Asselah
+
+🛠️ **Technologies Used**: Vue.js • Java Spring Boot • PostgreSQL (RDS) • AWS EC2 • AWS RDS • AWS S3 • GitHub Actions • Nginx
+
+🚀 This version of the app is fully deployed on a custom AWS infrastructure for learning and portfolio purposes!  
+🛠️ Everything is hosted on a single EC2 instance (due to AWS free tier 😅), with the database on Amazon RDS and CI/CD powered by GitHub Actions.  
+🌐 Live App: [sportscenter.yazidtech.com](https://sportscenter.yazidtech.com)
+
+### 📸 Architecture Overview
+
+![App Architecture](./architecture.png)
+
+---
+
 # ECSE 321 - W2024 - Group 11 - Sports Center App
 
-## Overview
-This project involves developing a web application for a local sport center to manage classes, schedules, and customer registrations. The app will be designed to cater to the needs of the center's owner, instructors, and customers, with all functionalities accessible via the web frontend
+## 📊 Project Overview
+This project involves developing a web application for a local sport center to manage classes, schedules, and customer registrations. It supports different user roles: owner, instructors, and customers, with functionalities accessible via a web frontend.
 
-Further documentation may be accessed via the [wiki](https://github.com/McGill-ECSE321-Winter2024/project-group-11/wiki).
+Further documentation is available on the [project wiki](https://github.com/McGill-ECSE321-Winter2024/project-group-11/wiki).
 
-## Deliverable 1
+---
 
-See project report here: [Deliverable 1](https://github.com/McGill-ECSE321-Winter2024/project-group-11/wiki)<table>
-  <tbody>
-    <tr>
-      <th>Team Member</th>
-      <th>Responsibilities</th>
-      <th>Hours (incl. meetings)</th>
-    </tr>
-    <tr>
-      <td>Yazid Asselah</td>
-      <td>
-        <ul>
-          <li>Preliminary domain model design</li>
-          <li>Rough draft of functional and non-functional requirements</li>
-          <li>Write rough draft of use case diagrams</li>
-          <li>Write use case specification #1</li>
-          <li>Write tests for the persistence layer1</li>
-        </ul>
-      </td>
-      <td>22 hours</td>
-    </tr>
-    <tr>
-      <td>Kenny Duy Nguyen</td>
-      <td>
-        <ul>
-          <li>Preliminary domain model design</li>
-          <li>Rough draft of functional and non-functional requirements</li>
-          <li>Write use case specification #2</li>
-          <li>Final draft of all requirements</li>
-          <li>General documentation tasks in the wiki and README.md file</li>
-        </ul>
-      </td>
-      <td>22 hours </td>
-    </tr>
-    <tr>
-      <td>Liam Di Chiro</td>
-      <td>
-        <ul>
-          <li>Preliminary domain model design</li>
-          <li>Rough draft of functional and non-functional requirements</li>
-          <li>Develop persistence layer</li>
-          <li>Create read case tests</li>
-          <li>Create write case tests</li>
-          <li>Write use case specification #3</li>
-        </ul>
-      </td>
-      <td>21 hours</td>
-    </tr>
-    <tr>
-      <td>Seungyeon Lee</td>
-      <td>
-        <ul>
-          <li>Preliminary domain model design</li>
-          <li>Rough draft of functional and non-functional requirements</li>
-          <li>Develop a test suite for the persistence layer</li>
-          <li>Create read case tests</li>
-          <li>Create write case tests</li>
-          <li>Write use case specification #4</li>
-        </ul>
-      </td>
-      <td>23 hours</td>
-    </tr>
-    <tr>
-      <td>Luke Freund</td>
-      <td>
-        <ul>
-          <li>Preliminary domain model design</li>
-          <li>Rough draft of functional and non-functional requirements</li>
-          <li>Final design for the domain model</li>
-          <li>Verification of the domain model with a T.A</li>
-          <li>Verification of the requirements with a T.A</li>
-          <li>Generation of Umple code</li>
-          <li>Write use case specification #5</li>
-          <li>General documentation tasks in the wiki and the backlog</li>
-        </ul>
-      </td>
-      <td>24 hours</td>
-    </tr>
-    <tr>
-  </tbody>
-</table>
+## 📅 Deliverable 1
+**[Project Report](https://github.com/McGill-ECSE321-Winter2024/project-group-11/wiki)**
 
-## Deliverable 2
-See project report here: [Deliverable 2](https://github.com/McGill-ECSE321-Winter2024/project-group-11/wiki)<table>
-  <tbody>
-    <tr>
-      <th>Team Member</th>
-      <th>Responsibilities</th>
-      <th>Hours (incl. meetings)</th>
-    </tr>
-    <tr>
-      <td>Yazid Asselah</td>
-      <td>
-        <ul>
-          <li>ClassType and Instructor API design and test</li>
-        </ul>
-      </td>
-      <td>20 hours</td>
-    </tr>
-    <tr>
-      <td>Kenny Duy Nguyen</td>
-      <td>
-        <ul>
-          <li>User/Login/Authentication API design and test</li>
-        </ul>
-      </td>
-      <td>21 hours </td>
-    </tr>
-    <tr>
-      <td>Liam Di Chiro</td>
-      <td>
-        <ul>
-          <li>Owner and Customer API design and test</li>
-        </ul>
-      </td>
-      <td>19 hours</td>
-    </tr>
-    <tr>
-      <td>Seungyeon Lee</td>
-      <td>
-        <ul>
-          <li>Session API design and test</li>
-        </ul>
-      </td>
-      <td>21 hours</td>
-    </tr>
-    <tr>
-      <td>Luke Freund</td>
-      <td>
-        <ul>
-          <li>Registration API design and test</li>
-        </ul>
-      </td>
-      <td>20 hours</td>
-    </tr>
-    <tr>
-  </tbody>
-</table>
+| Team Member       | Responsibilities                                                                                                  | Hours (incl. meetings) |
+|-------------------|-------------------------------------------------------------------------------------------------------------------|------------------------|
+| **Yazid Asselah** | Domain model, requirement drafts, use case diagrams & specification #1, persistence layer testing                | 22                     |
+| **Kenny Nguyen**  | Requirements draft/final, use case spec #2, general documentation                                                 | 22                     |
+| **Liam Di Chiro** | Domain model, use case spec #3, persistence layer + tests                                                         | 21                     |
+| **Seungyeon Lee** | Domain model, use case spec #4, test suite for persistence layer                                                  | 23                     |
+| **Luke Freund**   | Domain model verification, Umple code generation, use case spec #5, documentation                                 | 24                     |
 
-Classes were split up between all six members and each member was responsible for the respective Service, Controller, ServiceTest, and DTO classes.
+---
 
-## Deliverable 3
-See project report here: [Deliverable 3](https://github.com/McGill-ECSE321-Winter2024/project-group-11/wiki)<table>
-  <tbody>
-    <tr>
-      <th>Team Member</th>
-      <th>Responsibilities</th>
-      <th>Hours (incl. meetings)</th>
-    </tr>
-    <tr>
-      <td>Yazid Asselah</td>
-      <td>
-        <ul>
-          <li>Home, Classes, Profile, Center Infos and Sessions UI pages</li>
-        </ul>
-      </td>
-      <td>40 hours</td>
-    </tr>
-    <tr>
-      <td>Kenny Duy Nguyen</td>
-      <td>
-        <ul>
-          <li>Class types UI page</li>
-        </ul>
-      </td>
-      <td>25 hours </td>
-    </tr>
-    <tr>
-      <td>Liam Di Chiro</td>
-      <td>
-        <ul>
-          <li>Registration UI page</li>
-        </ul>
-      </td>
-      <td>26 hours</td>
-    </tr>
-    <tr>
-      <td>Seungyeon Lee</td>
-      <td>
-        <ul>
-          <li>Instructors UI page</li>
-        </ul>
-      </td>
-      <td>28 hours</td>
-    </tr>
-    <tr>
-      <td>Luke Freund</td>
-      <td>
-        <ul>
-          <li>About, Classes and Instructors (Dashboard) UI pages</li>
-        </ul>
-      </td>
-      <td>25 hours</td>
-    </tr>
-    <tr>
-  </tbody>
-</table>
+## 📅 Deliverable 2
+**[Project Report](https://github.com/McGill-ECSE321-Winter2024/project-group-11/wiki)**
+
+| Team Member       | API Responsibilities                                   | Hours |
+|-------------------|--------------------------------------------------------|--------|
+| **Yazid Asselah** | ClassType and Instructor API                          | 20     |
+| **Kenny Nguyen**  | User/Login/Authentication API                         | 21     |
+| **Liam Di Chiro** | Owner and Customer API                                | 19     |
+| **Seungyeon Lee** | Session API                                           | 21     |
+| **Luke Freund**   | Registration API                                      | 20     |
+
+Classes were split up between members. Each was responsible for their API’s Service, Controller, DTOs, and tests.
+
+---
+
+## 📅 Deliverable 3
+**[Project Report](https://github.com/McGill-ECSE321-Winter2024/project-group-11/wiki)**
+
+| Team Member       | Frontend Responsibilities                                            | Hours |
+|-------------------|----------------------------------------------------------------------|--------|
+| **Yazid Asselah** | Home, Classes, Profile, Center Infos, and Sessions UI pages         | 40     |
+| **Kenny Nguyen**  | Class Types UI page                                                  | 25     |
+| **Liam Di Chiro** | Registration UI page                                                 | 26     |
+| **Seungyeon Lee** | Instructors UI page                                                  | 28     |
+| **Luke Freund**   | About, Classes, Instructors (Dashboard) UI pages                     | 25     |
+
+---
+
+### 🚀 Technologies Used
+- Frontend: Vue.js
+- Backend: Java Spring Boot
+- Database: PostgreSQL (RDS)
+- Hosting: AWS EC2 + RDS + S3
+- CI/CD: GitHub Actions
+- Proxy & Routing: Nginx
+
+---
+
+Want to deploy it yourself? Let me know — happy to help! 🚀
