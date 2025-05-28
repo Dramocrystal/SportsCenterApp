@@ -51,4 +51,4 @@ jobs:
             sudo pkill -f 'java -jar' || true
             DB_USERNAME=${{ secrets.DB_USERNAME }} \
             DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
-            nohup java -jar ~/backend/sportscenterapp.jar > ~/backend/spring.log 2>&1 &
+            nohup java -jar ~/backend/sportscenterapp.jar > ~/backend/spring.log 2>&1 & disown

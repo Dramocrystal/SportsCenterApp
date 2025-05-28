@@ -27,26 +27,23 @@
 <script>
 import axios from 'axios';
 import navbar from '@/components/Navbar';
-import card from '@/components/Card'; // Make sure to use the correct component name
 import api from '../api';
 
 export default {
   name: 'homepage',
   components: {
-    navbar,
-    card
+    navbar
   },
   data() {
     return {
       msg: 'Welcome to the sports center',
       msg2: '',
-      cardDataList: [],
       infos: {
         adress: '',
         week: '',
         weekend: ''
       },
-    }
+    };
   },
   mounted() {
     this.fetchCenterData();
@@ -62,15 +59,14 @@ export default {
           this.createWelcomeMessage();
         })
         .catch(error => {
-          this.errMsg = error.response.data;
+          this.errMsg = error.response?.data || 'Fetch failed';
         });
     },
-
-    createWelcomeMessage(){
-      this.msg2 = "Come Meet us at " + this.infos.adress
+    createWelcomeMessage() {
+      this.msg2 = "Come Meet us at " + this.infos.adress;
     }
   }
-}
+};
 </script>
 
 <style>
@@ -143,13 +139,4 @@ body, html {
 
 }
 
-
-.card-row {
-    display: flex;
-    justify-content: space-around;
-}
-
-.card {
-    margin-right: 24px;
-}
 </style>
